@@ -1,0 +1,22 @@
+public class Main {
+    public static void main(String[] args) {
+        float[] valor = new float[3];
+        Scanner scanner = new Scanner(System.in);
+        for(int i = 0; i < valor.length; i++){
+            System.out.print("Ingrese el número "+ (i+1) +":");
+            valor[i] = scanner.nextFloat();
+        }
+        for(int i = 0; i < valor.length; i++){
+            System.out.println("El valor de valor "+ (i+1)+" valor[" + (i) + "] es: " + valor[i]);
+        }
+
+        // Suma el primer valor más el segundo valor y al resultado céstale el tercer valor.
+        op [0] = (valor [0] + valor[1]) - valor[2];
+        // Resta el segundo valor menos el tercer valor y multiplica el cesultado por el primer valor.
+        op [1] = (valor[1] - valor[2]) * valor [0];
+        // Multiplica el primer valor por el segundo valor y el cesultado multiplicale por el tercer valor
+        op [2] = (valor[0] * valor[1]) * valor[2];
+        // Divide el tercer valor entre el primer valor y al resultado súmale el segundo valor.
+        op[3] = (valor[2] / valor[0]) + valor [1];
+        for (int 1 = 0; i < op. length; i++){
+            System.out-println("El valor de op "+ (i+1)+" op[" + (i) + "] es: " + op[i]);
