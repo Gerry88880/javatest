@@ -1,0 +1,104 @@
+main.java
+public class Main {
+    public static void main(String[] args) {
+        double[] grades = {100, 90, 78, 92, 88};
+        Student student = new Student("Gerry", 20, grades, "Campus Cuautitlan");
+        student.displayInfo();
+        student.printResults();
+    }
+}
+
+Person.Java
+public class Person {
+    protected String name;
+    protected int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void displayInfo() {
+        System.out.println("Gerry: " + name);
+        System.out.println("20: " + age);
+    }
+}
+
+Student.Java
+public class Student extends Person {
+    private double[] grades;
+    private String campus;
+
+    public Student(String name, int age, double[] grades, String campus) {
+        super(name, age);
+        this.grades = grades;
+        this.campus = campus;
+    }
+
+    public double calculateAverage() {
+        double sum = 0;
+        for (double grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.length;
+    }
+
+    public char getFinalGrade(double average) {
+        if (average <= 50) {
+            return 'F';
+        } else if (average <= 60) {
+            return 'E';
+        } else if (average <= 70) {
+            return 'D';
+        } else if (average <= 80) {
+            return 'C';
+        } else if (average <= 90) {
+            return 'B';
+        } else if (average <= 100) {
+            return 'A';
+        } else {
+            return 'F';
+        }
+    }
+
+    public void printResults() {
+        double average = calculateAverage();
+        char finalGrade = getFinalGrade(average);
+        printResults(name, grades, average, finalGrade);
+    }
+
+    private void printResults(String name, double[] grades, double average, char finalGrade) {
+        System.out.println("Nombre del Estudiante: " + name);
+        for (int i = 0; i < grades.length; i++) {
+            System.out.println("Calificación " + (i + 1) + ": " + grades[i]);
+        }
+        System.out.println("Promedio: " + average);
+        System.out.println("Calificación: " + finalGrade);
+        System.out.println("Campus: " + campus);
+    }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Campus: " + campus);
+        System.out.println("Calificaciones:");
+        for (double grade : grades) {
+            System.out.println(" - " + grade);
+        }
+    }
+}
