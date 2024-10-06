@@ -1,0 +1,132 @@
+public class Main {
+    public static void main(String[] args) {
+        Person persona1 = new Person("Gerry",1);
+        Person persona2 = new Person("Jenny", 18);
+        System.out.println("Informa");
+
+        System.out.println("Informacion de persona");
+        persona1.displayinfo();
+        persona2.displayinfo();
+
+    }
+}
+
+public class Person {
+    private String name;
+
+
+    public Person(String name, int age, int calification, String campus) {
+        this.name = name;
+        this.age = age;
+        this.calification = calification;
+        this.Campus = campus;
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Person(String campus) {
+        Campus = campus;
+    }
+
+    private int age;
+    private int calification;
+    private String Campus;
+
+    public String getname(){
+        return name;
+
+    }
+
+    public void SetName(String name){
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getCalification() {
+        return calification;
+    }
+
+    public void setCalification(int calification) {
+        this.calification = calification;
+    }
+
+    public String getCampus() {
+        return Campus;
+    }
+
+    public void setCampus(String campus) {
+        Campus = campus;
+    }
+
+    public void displayinfo(){
+        System.out.println("El nombre es:" + name + "con id" + identificador);
+        if(age>0);
+        System.out.println("/t tiene " + age + "años");
+    }
+}
+public class Student extends Person {
+
+    public Student(String name, int age, int calification, String campus, int[] grades) {
+        super(name, age, calification, campus);
+        this.grades = grades;
+    }
+
+    public Student(String name, int age, int[] grades) {
+        super(name, age);
+        this.grades = grades;
+    }
+
+    public Student(String campus, int[] grades) {
+        super(campus);
+        this.grades = grades;
+    }
+
+    public int[] grades;
+
+    public double calPromedio(Integer[] grades)
+
+    int suma = 0;
+    for(int i = 0;
+    i<grades.lenght;i++)
+    suma +=grades[1];
+    }
+    return (double) suma / grades.length;
+
+}
+
+ public char setFinalGrade(double promedio) {
+    char grade;
+    if (promedio >= 91){
+        grade = 'A';
+    } else if (promedio >= 81) {
+        grade = 'B';
+    } else if (promedio >= 71) {
+        grade = 'C';
+    } else if (promedio >= 61) {
+        grade = 'D';
+    } else if (promedio >= 51) {
+        grade = 'E';
+    } else 1
+    grade = 'F';
+    }
+    return grade;
+}
+
