@@ -1,0 +1,44 @@
+Números.Java
+
+import java.util.Scanner;
+
+public class Números {
+    public static void main(String[] args) {
+
+        System.out.println("Números del 1 al 100 usando while:");
+        int i = 1;
+        while (i <= 100) {
+            System.out.print(i + " ");
+            i++;
+        }
+        System.out.println(); // Salto de línea
+
+
+        System.out.println("Números del 1 al 100 usando for:");
+        for (int j = 1; j <= 100; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println(); // Salto de línea
+
+
+        System.out.println("Números del 1 al 100 divisibles entre 2 y 3:");
+        for (int k = 1; k <= 100; k++) {
+            if (k % 2 == 0 && k % 3 == 0) {
+                System.out.print(k + " ");
+            }
+        }
+        System.out.println(); // Salto de línea
+
+
+        Scanner scanner = new Scanner(System.in);
+        int num;
+        do {
+            System.out.print("Introduce un número mayor o igual a cero: ");
+            num = scanner.nextInt();
+            if (num < 0) {
+                System.out.println("Número no válido. Intenta de nuevo.");
+            }
+        } while (num < 0);
+        System.out.println("Número válido introducido: " + num);
+    }
+}
