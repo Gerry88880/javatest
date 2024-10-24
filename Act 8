@@ -1,0 +1,115 @@
+Main.Java
+
+public class Main {
+    public static void main(String[] args) {
+        // Ejemplo de datos de entrada
+        String nombre = "Juan";
+        String apellidoPaterno = "Perez";
+        String apellidoMaterno = "Lopez";
+        String fechaNacimiento = "19900101"; // YYYYMMDD
+        char sexo = 'H';
+        EntidadFederativa entidadFederativa = new EntidadFederativa("Aguascalientes", "AS");
+
+        CURP curp = new CURP(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, entidadFederativa);
+        String curpGenerada = curp.generarCURP();
+
+        System.out.println("CURP Generada: " + curpGenerada);
+    }
+}
+
+CURP.Java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CURP {
+    private String nombre;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String fechaNacimiento; // Formato: YYYYMMDD
+    private char sexo; // 'H' para hombre, 'M' para mujer
+    private EntidadFederativa entidadFederativa;
+
+    private static final Map<String, String> entidadMap;
+
+    static {
+        entidadMap = new HashMap<>();
+        entidadMap.put("Aguascalientes", "AS");
+        entidadMap.put("Baja California", "BC");
+        entidadMap.put("Baja California Sur", "BS");
+        entidadMap.put("Campeche", "CC");
+        entidadMap.put("Coahuila", "CL");
+        entidadMap.put("Colima", "CM");
+        entidadMap.put("Chiapas", "CS");
+        entidadMap.put("Chihuahua", "CH");
+        entidadMap.put("Ciudad de México", "DF");
+        entidadMap.put("Durango", "DG");
+        entidadMap.put("Guanajuato", "GT");
+        entidadMap.put("Guerrero", "GR");
+        entidadMap.put("Hidalgo", "HG");
+        entidadMap.put("Jalisco", "JC");
+        entidadMap.put("México", "MC");
+        entidadMap.put("Michoacán", "MN");
+        entidadMap.put("Morelos", "MS");
+        entidadMap.put("Nayarit", "NT");
+        entidadMap.put("Nuevo León", "NL");
+        entidadMap.put("Oaxaca", "OC");
+        entidadMap.put("Puebla", "PL");
+        entidadMap.put("Querétaro", "QT");
+        entidadMap.put("Quintana Roo", "QR");
+        entidadMap.put("San Luis Potosí", "SP");
+        entidadMap.put("Sinaloa", "SL");
+        entidadMap.put("Sonora", "SR");
+        entidadMap.put("Tabasco", "TC");
+        entidadMap.put("Tamaulipas", "TS");
+        entidadMap.put("Tlaxcala", "TL");
+        entidadMap.put("Veracruz", "VZ");
+        entidadMap.put("Yucatán", "YN");
+        entidadMap.put("Zacatecas", "ZS");
+        entidadMap.put("Nacido en el Extranjero", "NE");
+    }
+
+    public CURP(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, char sexo, EntidadFederativa entidadFederativa) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.fechaNacimiento = fechaNacimiento;
+        this.sexo = sexo;
+        this.entidadFederativa = entidadFederativa;
+    }
+
+    public String generarCURP() {
+        String curp = "";
+
+        curp += apellidoPaterno.substring(0, 2).toUpperCase();
+        curp += apellidoMaterno.substring(0, 1).toUpperCase();
+        curp += nombre.substring(0, 1).toUpperCase();
+        curp += fechaNacimiento.substring(2, 8);
+        curp += sexo;
+        curp += entidadFederativa.getCodigo();
+
+        // Aquí agregar lógica para las consonantes internas del apellido paterno, apellido materno y nombre.
+        // Por simplicidad, esto se omite en este ejemplo.
+
+        return curp;
+    }
+}
+
+EntidadFederativa.Java
+
+public class EntidadFederativa {
+    private String nombre;
+    private String codigo;
+
+    public EntidadFederativa(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String toString() {
+        return nombre;
+    }
+}
