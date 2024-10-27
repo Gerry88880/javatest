@@ -1,0 +1,90 @@
+Main,Java
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Biblioteca biblioteca = new Biblioteca();
+
+
+        biblioteca.agregarLibro(new Libro("Cien años de soledad", "Gabriel García Márquez", 1967));
+        biblioteca.agregarLibro(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 1605));
+        biblioteca.agregarLibro(new Libro("1984", "George Orwell", 1949));
+        biblioteca.agregarLibro(new Libro("Orgullo y prejuicio", "Jane Austen", 1813));
+
+        while (true) {
+            System.out.println("\nSeleccione una opción:");
+            System.out.println("1 = Agregar Libro");
+            System.out.println("2 = Mostrar Libros");
+            System.out.println("3 = Salir");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese el título del libro:");
+                    String titulo = scanner.nextLine();
+                    System.out.println("Ingrese el autor del libro:");
+                    String autor = scanner.nextLine();
+                    System.out.println("Ingrese el año de publicación del libro:");
+                    int año = scanner.nextInt();
+                    scanner.nextLine(); // Consumir nueva línea
+                    biblioteca.agregarLibro(new Libro(titulo, autor, año));
+                    break;
+                case 2:
+                    biblioteca.mostrarLibros();
+                    break;
+                case 3:
+                    System.out.println("Saliendo del programa...");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        }
+    }
+}
+
+Libro.Java
+
+public class Libro {
+    private String titulo;
+    private String autor;
+    private int añoPublicacion;
+
+    public Libro(String titulo, String autor, int añoPublicacion) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.añoPublicacion = añoPublicacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo + ", Autor: " + autor + ", Año: " + añoPublicacion;
+    }
+}
+
+Biblioteca.Java
+
+import java.util.ArrayList;
+
+public class Biblioteca {
+    private ArrayList<Libro> libros = new ArrayList<>();
+
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
+        System.out.println("Libro agregado: " + libro);
+    }
+
+    public void mostrarLibros() {
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros en la biblioteca.");
+        } else {
+            System.out.println("Libros en la biblioteca:");
+            for (Libro libro : libros) {
+                System.out.println(libro);
+            }
+        }
+    }
+}
