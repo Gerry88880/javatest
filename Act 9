@@ -42,8 +42,7 @@ public class Main {
             String nombre = scanner.nextLine();
             System.out.print("Edad: ");
             int edad = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
-
+            scanner.nextLine(); 
             estudiantes[i] = new Estudiante(nombre, edad);
         }
 
