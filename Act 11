@@ -1,0 +1,62 @@
+Vehiculo.Java
+
+public class Vehiculo {
+    private String marca;
+    private String modelo;
+    private int anoFabricacion;
+
+    
+    public Vehiculo(String marca, String modelo, int anoFabricacion) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anoFabricacion = anoFabricacion;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public int getAnoFabricacion() {
+        return anoFabricacion;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Año de Fabricación: " + anoFabricacion);
+    }
+}
+
+VehículoTerrestre.Java
+
+public class VehiculoTerrestre extends Vehiculo {
+    public VehiculoTerrestre(String marca, String modelo, int anoFabricacion) {
+        super(marca, modelo, anoFabricacion);
+    }
+}
+
+VehiculoAcuatico.Java
+
+public class VehiculoAcuatico extends Vehiculo {
+    
+    public VehiculoAcuatico(String marca, String modelo, int anoFabricacion) {
+        super(marca, modelo, anoFabricacion);
+    }
+}
+
+Main.Java
+
+public class Main {
+    public static void main(String[] args) {
+    new VehiculoTerrestre("Toyota", "Corolla", 2020);
+   new VehiculoAcuatico("Yamaha", "WaveRunner", 2019);
+        System.out.println("Información del vehículo terrestre:");
+        coche.mostrarInformacion();
+     System.out.println("\nInformación del vehículo acuático:");
+        barco.mostrarInformacion();
+    }
+}
